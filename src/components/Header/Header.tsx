@@ -15,6 +15,22 @@ const Header: React.FC<any> = (Props) => {
 
   const { userSettings } = useLanguage();
 
+  if (!Props.state) {
+    return (
+      <HeaderStyle>
+        <div className="highligh-box">
+          <Highlight/>
+        </div>
+        <BigLed type='red' />
+        <nav>
+          <div>
+            <LedIndicator type={'green'} text={userSettings.header[0]}/>
+          </div>
+        </nav>
+      </HeaderStyle>
+    );
+  }
+
   useEffect(() => {
     handleToggle(Props.state);
   }, [Props.state]);
