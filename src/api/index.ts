@@ -13,6 +13,6 @@ export async function signUp (data: signUpData) {
 }
 
 export async function signIn (data: authData) {
-  const token = await axios.post(`${BASE_URL}/auth/login`, { ...data });
-  return token.data;
+  const signInData = await axios.post(`${BASE_URL}/auth/login`, { ...data });
+  return signInData.data;
 }

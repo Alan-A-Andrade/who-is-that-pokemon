@@ -49,7 +49,7 @@ const Landing: React.FC<{}> = () => {
 
       {state === 'login'
         ? <Login/>
-        : <SignUp/>}
+        : <SignUp setState={handleToggle}/>}
     </LandingMenuStyle>
   );
 };

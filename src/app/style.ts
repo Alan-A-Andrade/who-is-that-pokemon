@@ -13,6 +13,11 @@ const App = styled.main`
     font-size: calc(${props => props.theme.fontSize}px + 2vmin);
   }
 
+
+  .pp-container{
+    background-color: ${props => props.theme.main};
+
+  }
 `;
 
 export default App;

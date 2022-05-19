@@ -8,16 +8,16 @@ export interface userSettingsContextType {
 
 const userSettingsContext = createContext<userSettingsContextType | null>(null);
 
+export const defaultUserSettings: userSettings = {
+  color: [220, 0, 0],
+  fontSize: 2,
+  language: 'en-US'
+};
+
 export function UserSettingsProvider ({ children }:any) {
   if (localStorage.getItem('userSettings') === 'undefined') {
     localStorage.clear();
   }
-
-  const defaultUserSettings: userSettings = {
-    color: [220, 0, 0],
-    fontSize: 2,
-    language: 'en-US'
-  };
 
   const userSettingsLocalStorage = localStorage.getItem('userSettings');
   let persistedUserSettingsData: userSettings = JSON.parse(userSettingsLocalStorage as string);

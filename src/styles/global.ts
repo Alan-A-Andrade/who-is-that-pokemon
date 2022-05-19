@@ -28,6 +28,5 @@ body {
   font-family: "pixel"
 }
 
-
 `;
 export default GlobalStyle;

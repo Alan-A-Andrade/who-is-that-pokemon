@@ -5,9 +5,12 @@ import SignUpStyle from './style';
 import useLanguage from '../../hooks/useLanguage';
 import { signUp } from '../../interfaces';
 import * as api from '../../api';
+import { okModal } from '../../modal/sucessModal';
+import { useTheme } from 'styled-components';
 
-export const SignUp: React.FC<{}> = () => {
+export const SignUp: React.FC<any> = (Props) => {
   const { userSettings } = useLanguage();
+  const theme = useTheme();
 
   const [signUpData, setSignUpData] = useState<signUp>({
     trainer: '',
@@ -22,15 +25,16 @@ export const SignUp: React.FC<{}> = () => {
     if (signUpData.password !== signUpData.confirmPassword) {
       return;
     }
-
     try {
       await api.signUp({
         trainer: signUpData.trainer,
         email: signUpData.email,
         password: signUpData.password
       });
-    } catch (error) {
+      okModal('Bem vindo ao mundo pokemon!', Props.setState('login'), theme);
+    } catch (error: any) {
       console.log(error);
+      okModal(error.response.data, null, theme);
     }
   }
 
