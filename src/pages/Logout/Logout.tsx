@@ -1,20 +1,18 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React from 'react';
 import LogoutStyle from './style';
 import Frame from '../../components/Frame/Frame';
 import Button from '../../components/Button/Button';
-import LedIndicator from '../../components/layout/LedIndicator/LedIndicator';
 import useLanguage from '../../hooks/useLanguage';
-import Pokeball from '../../components/Pokeball/Pokeball';
+import useAuth from '../../hooks/useAuth';
 
 const Logout: React.FC<any> = (Props) => {
-  const [isSelectedButton, setIsSelectButton] = useState(true);
-  const [userPokemonList, setUserPokemonList] = useState([]);
+  const authContext = useAuth();
 
   const { userSettings } = useLanguage();
 
   function handleButtonClick () {
-    setIsSelectButton(!isSelectedButton);
+    authContext?.logoff();
   }
   return (
     <LogoutStyle>

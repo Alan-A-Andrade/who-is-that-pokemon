@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const UserSettingsStyle = styled.section`
 
-  height: 80vh;
+  height: 75vh;
   width: 100%;
   display: flex;
   flex-direction: column;

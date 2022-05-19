@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { authContextType, authType } from '../interfaces';
+import { authContextType, authType, userSettings } from '../interfaces';
 
 const AuthContext = createContext<authContextType | null>(null);
 
@@ -13,7 +13,7 @@ export function AuthContextProvider ({ children }:any) {
 
   const [auth, setAuth] = useState(persistedAuthData);
 
-  function login (authData: authType) {
+  function login (authData: authType, userSettings: userSettings) {
     setAuth(authData);
     localStorage.setItem('auth', JSON.stringify(authData));
   }
@@ -21,6 +21,8 @@ export function AuthContextProvider ({ children }:any) {
   function logoff () {
     setAuth('');
     localStorage.removeItem('auth');
+    localStorage.removeItem('userSettings');
+    window.location.reload();
   }
 
   return (

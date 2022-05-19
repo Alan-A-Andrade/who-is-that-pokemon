@@ -23,6 +23,11 @@ h1{
   flex-direction: row;
   gap: 1em;
   justify-content: space-between;
+  justify-content: flex-start;
+  
+  & >button{
+    box-shadow: none;
+  }
 }
 
 .tip-wrapper{

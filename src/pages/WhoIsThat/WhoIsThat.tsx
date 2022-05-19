@@ -40,7 +40,7 @@ const WhoIsThat: React.FC<{}> = () => {
 
   return (
     <WhoIsThatStyle>
-      <Frame width={'75%'} height={'40%'}>
+      <Frame width={'75%'} height={'50%'}>
         <Screen width={'100%'} height={'100%'}>
           {isCorrect
             ? <img src={imageSprite} alt="" />
@@ -54,7 +54,7 @@ const WhoIsThat: React.FC<{}> = () => {
       <div className='live-wrapper'>
         <Button
           disable={lives === 0}
-          isSelected ={lives === 0}
+          isSelected ={lives !== 0}
           onClick={handleGuess}>
           {userSettings.button[4]}
         </Button>
@@ -62,14 +62,6 @@ const WhoIsThat: React.FC<{}> = () => {
           <h1>{lives} </h1><Pokeball/>
         </HorizontalDisplay>
       </div>
-      <Frame width={'75%'} height={'40%'}>
-        <div className="tip-wrapper">
-          <h1>{userSettings.title[2]}</h1>
-          <LedIndicator text={userSettings.title[1]} type='green'/>
-          <LedIndicator text={userSettings.title[1]} type='green'/>
-          <LedIndicator text={userSettings.title[1]} type='green'/>
-        </div>
-      </Frame>
     </WhoIsThatStyle>
   );
 };

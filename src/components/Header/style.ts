@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 const HeaderStyle = styled.header`
 width: 100%;
-height: 20vh;
+min-height: 20vh;
 display: flex;
 justify-content: space-between;
-align-items: center;
+align-items: flex-start;
 
 padding: 1em;
 

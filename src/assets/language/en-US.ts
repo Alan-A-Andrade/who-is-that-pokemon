@@ -29,6 +29,20 @@ const enUS = {
       0: 'YES',
       1: 'NO',
       2: 'ARE YOU SURE YOU WANT TO LOGOUT'
+    },
+    landing: {
+      0: 'LOGIN',
+      1: 'SIGN-UP'
+    },
+    login: {
+      0: 'E-MAIL',
+      1: 'PASSWORD'
+    },
+    signup: {
+      0: 'TRAINER',
+      1: 'E-MAIL',
+      2: 'PASSWORD',
+      3: 'CONFIRM PASSWORD'
     }
   }
 };

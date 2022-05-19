@@ -29,6 +29,20 @@ const ptBR = {
       0: 'SIM',
       1: 'NÃO',
       2: 'CERTEZA QUE DESEJA SAIR?'
+    },
+    landing: {
+      0: 'ENTRAR',
+      1: 'REGISTRAR'
+    },
+    login: {
+      0: 'E-MAIL',
+      1: 'SENHA'
+    },
+    signup: {
+      0: 'TREINADOR',
+      1: 'E-MAIL',
+      2: 'SENHA',
+      3: 'CONFIRMAR SENHA'
     }
   }
 

@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import LandingMenuStyle from './style';
-import Frame from '../Frame/Frame';
 import LedIndicator from '../layout/LedIndicator/LedIndicator';
 import useLanguage from '../../hooks/useLanguage';
 import { Login } from '../../pages/Login/Login';
@@ -41,10 +40,10 @@ const Landing: React.FC<{}> = () => {
     <LandingMenuStyle>
       <nav>
         <div onClick={() => handleToggle('login')}>
-          <LedIndicator type={ledColors.login} text={'LOGIN'}/>
+          <LedIndicator type={ledColors.login} text={userSettings.landing[0]}/>
         </div>
         <div onClick={() => handleToggle('signup')}>
-          <LedIndicator type={ledColors.signup} text={'SIGN-UP'}/>
+          <LedIndicator type={ledColors.signup} text={userSettings.landing[1]}/>
         </div>
       </nav>
 

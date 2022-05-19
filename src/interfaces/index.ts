@@ -45,3 +45,17 @@ export interface headerOptionsLedColors {
   settings: Led,
   logout: Led
 }
+
+export interface signUp {
+  trainer: string
+  email: string
+  password: string
+  confirmPassword: string
+}
+
+export type signUpData = Omit<signUp, 'confirmPassword'>
+
+export interface authData {
+  email: string
+  password: string
+}
