@@ -67,3 +67,16 @@ export type CreateUserSettingsData = {
   language: string;
   fontSize: number;
 }
+
+export type CatchPokemon = {
+  pokemonId: number;
+  tentatives: number;
+}
+
+export interface WhoIsThatType {
+  id: number,
+  pokemonId: number,
+  name: string,
+  spriteURL: string,
+  blackSpriteURL: string
+}
