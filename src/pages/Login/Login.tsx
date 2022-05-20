@@ -5,12 +5,14 @@ import LoginStyle from './style';
 import useLanguage from '../../hooks/useLanguage';
 import useAuth from '../../hooks/useAuth';
 import * as api from '../../api';
-import { defaultUserSettings } from '../../contexts/UserSettingsContext';
 import { useTheme } from 'styled-components';
 import { okModal } from '../../modal/sucessModal';
+import useUserSettings from '../../hooks/useUserSettings';
+import { defaultUserSettings } from '../../contexts/UserSettingsContext';
 
 export const Login: React.FC<{}> = () => {
   const theme = useTheme();
+  const settings = useUserSettings();
   const { userSettings } = useLanguage();
   const [signIn, setSignIn] = useState({
     email: '',
@@ -24,25 +26,17 @@ export const Login: React.FC<{}> = () => {
     try {
       const signInData = await api.signIn(signIn);
 
-      if (signInData.userSettings === null) {
-        authContext?.login(signInData.token, defaultUserSettings);
+      if (signInData.userSettings !== null) {
+        const { colorBlue, colorGreen, colorRed, fontSize, language } = signInData.userSettings;
+        settings?.updateUserSettings({
+          color: [colorRed, colorGreen, colorBlue],
+          fontSize,
+          language
+        });
       } else {
-        const {
-          colorRed,
-          colorBlue,
-          colorGreen,
-          language,
-          fontSize
-        } = signInData.signInData.userSettings;
-
-        authContext?.login(
-          signInData.token, {
-            color: [colorRed, colorBlue, colorGreen],
-            fontSize,
-            language
-          }
-        );
+        settings?.updateUserSettings(defaultUserSettings);
       }
+      authContext?.login(signInData.auth);
     } catch (error: any) {
       okModal(error.response.data, null, theme);
     }

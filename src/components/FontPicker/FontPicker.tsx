@@ -12,11 +12,14 @@ export const FontPicker: React.FC<{}> = () => {
 
   return (
     <FontPickerStyle>
-      <div onClick={() => handleClick(0.5)} className='text-color-wrapper'>
+      <div onClick={() => handleClick(1)} className='text-color-wrapper'>
         <h1>SMALL</h1>
       </div>
       <div onClick={() => handleClick(2)} className='text-color-wrapper'>
         <h1>MEDIUM</h1>
+      </div>
+      <div onClick={() => handleClick(3)} className='text-color-wrapper'>
+        <h1>LARGE</h1>
       </div>
     </FontPickerStyle>
   );

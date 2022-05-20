@@ -9,7 +9,7 @@ export interface LedProp {
 
 export interface authType {
   token: string
-  name: string
+  trainer: string
 }
 
 export interface authContextType {
@@ -58,4 +58,12 @@ export type signUpData = Omit<signUp, 'confirmPassword'>
 export interface authData {
   email: string
   password: string
+}
+
+export type CreateUserSettingsData = {
+  colorRed: number;
+  colorBlue: number;
+  colorGreen: number;
+  language: string;
+  fontSize: number;
 }

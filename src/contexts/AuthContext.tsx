@@ -1,5 +1,5 @@
 import { createContext, useState } from 'react';
-import { authContextType, authType, userSettings } from '../interfaces';
+import { authContextType, authType } from '../interfaces';
 
 const AuthContext = createContext<authContextType | null>(null);
 
@@ -13,7 +13,7 @@ export function AuthContextProvider ({ children }:any) {
 
   const [auth, setAuth] = useState(persistedAuthData);
 
-  function login (authData: authType, userSettings: userSettings) {
+  function login (authData: authType) {
     setAuth(authData);
     localStorage.setItem('auth', JSON.stringify(authData));
   }

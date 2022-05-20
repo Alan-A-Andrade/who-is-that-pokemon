@@ -9,8 +9,14 @@ import { FontPicker } from '../../components/FontPicker/FontPicker';
 import { LanguagePicker } from '../../components/LanguagePicker/LanguagePicker';
 import * as interfaces from '../../interfaces';
 import useLanguage from '../../hooks/useLanguage';
+import * as api from '../../api';
+import useAuth from '../../hooks/useAuth';
+import useUserSettings from '../../hooks/useUserSettings';
+import { defaultUserSettings } from '../../contexts/UserSettingsContext';
 
 const UserSettings: React.FC<{}> = () => {
+  const auth = useAuth();
+  const settings = useUserSettings();
   const [option, setOption] = useState(<ColorPicker/>);
   const [ledColors, setLedColors] = useState<interfaces.settingsOptionsLedColors>({
     color: 'green',
@@ -19,6 +25,33 @@ const UserSettings: React.FC<{}> = () => {
   });
 
   const { userSettings } = useLanguage();
+
+  async function handleSave () {
+    if (settings && auth) {
+      const {
+        color: [colorRed, colorGreen, colorBlue],
+        fontSize,
+        language
+      } = settings.userSettings;
+
+      await api.saveSettings(
+        auth.auth.token,
+        {
+          colorRed,
+          colorBlue,
+          colorGreen,
+          fontSize,
+          language
+        });
+    }
+  }
+
+  async function handleReset () {
+    if (settings && auth) {
+      await api.deleteSettings(auth.auth.token);
+      settings.updateUserSettings(defaultUserSettings);
+    }
+  }
 
   function handleToggle (option: string) {
     switch (option) {
@@ -68,8 +101,8 @@ const UserSettings: React.FC<{}> = () => {
         {option}
       </Frame>
       <nav>
-        <Button disable={false} isSelected={true}>{userSettings.button[0]}</Button>
-        <Button disable={false} isSelected={true}>{userSettings.button[1]}</Button>
+        <Button onClick={handleSave} disable={false} isSelected={true}>{userSettings.button[0]}</Button>
+        <Button onClick={handleReset} disable={false} isSelected={true}>{userSettings.button[1]}</Button>
       </nav>
     </UserSettingsStyle>
   );
